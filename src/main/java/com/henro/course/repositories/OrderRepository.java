@@ -1,10 +1,10 @@
 package com.henro.course.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.henro.course.entities.User;
+import com.henro.course.entities.Order;
 
 //interface que implementa a interação de dados OBJ/BD
-public interface OrderRepository extends JpaRepository<User, Long>{
+public interface OrderRepository extends JpaRepository<Order, Long>{
 
     
 } 
