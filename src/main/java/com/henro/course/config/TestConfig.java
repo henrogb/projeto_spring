@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.henro.course.entities.User;
-import com.henro.course.repositories.UserRepository;
+import com.henro.course.repositories.OrderRepository;
 
 //classe de configuração para o perfil de teste
 //a classe de configuração é uma classe auxiliar
@@ -19,7 +19,7 @@ public class TestConfig implements CommandLineRunner{
 
     //injeção de depencia "automatica" do spring
     @Autowired
-    private UserRepository userRepository;
+    private OrderRepository userRepository;
 
     @Override
     //impletmentação do método do ComandLineRunner
