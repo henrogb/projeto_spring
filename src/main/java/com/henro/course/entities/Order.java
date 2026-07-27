@@ -3,6 +3,8 @@ package com.henro.course.entities;
 import java.io.Serializable;
 import java.time.Instant;
 
+import com.henro.course.entities.enums.OrderStatus;
+
 import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,10 +24,12 @@ public class Order implements Serializable {
     private Long Id;
     private Instant moment;
 
-
     @ManyToOne
     @JoinColumn(name = "clientId")
     private User client;
+
+    //mudamos para integer para podermos controlar melhor o OrderStatus 
+    private Integer orderStatus;
 
     @Override
     public int hashCode() {
@@ -50,6 +54,14 @@ public class Order implements Serializable {
         } else if (!Id.equals(other.Id))
             return false;
         return true;
+    }
+
+    public OrderStatus getOrderStatus(){
+        return OrderStatus.valueOf(orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus){
+        this.orderStatus = orderStatus.getCode();
     }
 
     public Long getId() {
@@ -79,9 +91,10 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(Long id, Instant moment, User client) {
+    public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
         Id = id;
         this.moment = moment;
+        setOrderStatus(orderStatus);
         this.client = client;
     } 
 }
