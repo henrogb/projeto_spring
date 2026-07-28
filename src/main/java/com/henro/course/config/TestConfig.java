@@ -1,5 +1,6 @@
 package com.henro.course.config;
 
+import java.lang.reflect.Array;
 import java.time.Instant;
 import java.util.Arrays;
 
@@ -31,13 +32,16 @@ public class TestConfig implements CommandLineRunner{
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     //impletmentação do método do ComandLineRunner
     public void run(String... args) throws Exception {
 
         Category cat1 = new Category(null, "Eletronics");
 
-        CategoryRepository.saveAll(cat1);
+        categoryRepository.saveAll(Arrays.asList(cat1));
 
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "519999988", "12345");
         User u2 = new User(null, "zezinho zeluko", "zeliki@gmail.com", "511231988", "122225");
